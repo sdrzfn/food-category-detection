@@ -3,9 +3,13 @@ import tensorflow as tf
 import numpy as np
 from tensorflow.keras.preprocessing import image
 from PIL import Image
+import gdown
 
 # Load model
-model_food = tf.keras.models.load_model("resnet_best_model10.keras")
+url = "https://drive.google.com/uc?id=154M5eBFu3mrwicYwlIkK3V8j7aazLzPT"
+output = "resnet_best_model10.keras"
+gdown.download(url, output, quiet=False)
+model = tf.keras.models.load_model(output)
 
 food_classes = ["apel", "apem", "bakpia", "jeruk", "kue pastel", "lemper", "onde-onde", "putu ayu", "risol", "roti"]
 
@@ -24,7 +28,7 @@ if img_file or camera_file:
     x = np.expand_dims(np.array(img_resized)/255.0, axis=0)
 
     # Predict
-    food_pred = np.argmax(model_food.predict(x), axis=1)[0]
+    food_pred = np.argmax(model.predict(x), axis=1)[0]
 
     st.subheader("🔎 Hasil Prediksi")
     st.write("🍔 Food Category:", food_classes[food_pred])
