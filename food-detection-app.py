@@ -3,12 +3,9 @@ import tensorflow as tf
 import numpy as np
 from tensorflow.keras.preprocessing import image
 from PIL import Image
-import gdown
 
 # Load model
-url = "https://drive.google.com/uc?id=154M5eBFu3mrwicYwlIkK3V8j7aazLzPT"
-output = "resnet_best_model10.keras"
-gdown.download(url, output, quiet=False)
+output = "resnet_best_model10.tflite"
 model = tf.keras.models.load_model(output)
 
 food_classes = ["apel", "apem", "bakpia", "jeruk", "kue pastel", "lemper", "onde-onde", "putu ayu", "risol", "roti"]
