@@ -22,7 +22,7 @@ st.title("🍽️ Food Category Detection")
 # Upload image
 img_file = st.file_uploader("Upload Foto", type=["jpg", "png", "jpeg"])
 camera_file = st.camera_input("Atau gunakan Kamera")
-model = load_model
+model = load_model (path)
 
 if img_file or camera_file:
     img = Image.open(img_file or camera_file).convert("RGB")
