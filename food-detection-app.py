@@ -7,10 +7,10 @@ from PIL import Image
 
 # Load model
 file_id = "154M5eBFu3mrwicYwlIkK3V8j7aazLzPT"
-path = "resnet_best_model10.keras"
+path = "resnet_best_model.tflite"
 
 def load_model():
-    if not os.path.exists("freshness_best_model.keras"):
+    if not os.path.exists("resnet_best_model.tflite"):
         url = f"https://drive.google.com/uc?id={file_id}"
         gdown.download(url, path, quiet=False)
     return load_model(path)
